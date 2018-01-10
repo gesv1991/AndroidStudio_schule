@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -8,35 +7,18 @@
     android:orientation="vertical"
     tools:context="com.example.sveng.tastaturlayout.MainActivity">
 
-    <EditText
-        android:id="@+id/editText5"
-        android:layout_width="match_parent"
-        android:layout_height="124dp"
-        android:ems="10"
-        android:inputType="textMultiLine" />
-
-    <EditText
-        android:id="@+id/editText6"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="number"
-        android:singleLine="true" />
-
     <TextView
         android:id="@+id/textView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/An" />
+        android:text="@string" />
 
     <EditText
         android:id="@+id/editText2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="textEmailAddress|textPersonName"
-        android:singleLine="false"
-        android:text="Name" />
+        android:inputType="textEmailAddress" />
 
     <TextView
         android:id="@+id/textView3"
@@ -49,8 +31,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="text|textPersonName"
-        android:text="Name" />
+        android:inputType="textPersonName" />
 
     <TextView
         android:id="@+id/textView4"
@@ -59,14 +40,10 @@
         android:text="@string/Message" />
 
     <EditText
-        android:id="@+id/editText4"
+        android:id="@+id/editText"
         android:layout_width="match_parent"
-        android:layout_height="357dp"
-        android:layout_gravity="top"
+        android:layout_height="327dp"
         android:ems="10"
         android:gravity="top|left"
-        android:inputType="textCapSentences|textMultiLine"
-        android:keyboardNavigationCluster="false"
-        android:password="false" />
-
+        android:inputType="textMultiLine" />
 </LinearLayout>

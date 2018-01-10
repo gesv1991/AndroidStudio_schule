@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Serviceauftrag</string>
+    <string name="Serviceauftrag">Serviceauftragsnummer</string>
+    <string name="Kundennummer">Kundennummer</string>
+    <string name="Datum">Datum</string>
+    <string name="Problembeschreibung">Problembeschreibung</string>
+    <string name="Servicetechniker">Servicetechniker</string>
+    <string name="Arbeiten">Arbeiten</string>
+    <string name="Material">Material</string>
+    <string name="Weiter">Weiter</string>
+    <string name="erster">Erster Text</string>
+    <string name="zweiter">Zweiter Text</string>
+    <string name="dritter">Dritter Text</string>
+    <string name="vierter">Vierter Text</string>
+</resources>

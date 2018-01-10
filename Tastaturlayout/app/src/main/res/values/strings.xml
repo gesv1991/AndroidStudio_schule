@@ -1,8 +1,6 @@
 <resources>
     <string name="app_name">Tastaturlayout</string>
-    <string name="An">An</string>
+    <string name="empfaenger">An</string>
     <string name="Betreff">Betreff</string>
     <string name="Message">Nachricht</string>
-
-
 </resources>
