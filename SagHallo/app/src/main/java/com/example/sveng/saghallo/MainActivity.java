@@ -57,7 +57,6 @@ public class MainActivity extends Activity implements TextToSpeech.OnInitListene
                     tts.setLanguage(Locale.ENGLISH);
                 }*/
                 tts.speak(text, TextToSpeech.QUEUE_FLUSH, null);
-                //GitHub
             }
         });
     }
