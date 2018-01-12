@@ -3,4 +3,6 @@
     <string name="start">Willkommen beim Mückenfang</string>
     <string name="Start">Start</string>
     <string name="los">Let\'s get Ready!!!</string>
+    <string name="startGame">Starte das Spiel</string>
+    <string name="startButton">Starte das Spiel</string>
 </resources>
