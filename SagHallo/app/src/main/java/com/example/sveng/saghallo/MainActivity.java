@@ -9,6 +9,8 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
+import java.util.Locale;
+
 public class MainActivity extends Activity implements TextToSpeech.OnInitListener, View.OnClickListener{
 
     private TextToSpeech tts;
@@ -39,15 +41,24 @@ public class MainActivity extends Activity implements TextToSpeech.OnInitListene
 
     @Override
     public void onClick(View view) {
+
+        int selectedId = radioLanguage.getCheckedRadioButtonId();
+        speakButton = (RadioButton) findViewById(selectedId);
         EditText editText = (EditText)findViewById(R.id.speakText);
-        text = editText.getText().toString();
-        tts.speak(text, TextToSpeech.QUEUE_FLUSH, null);
+
+        if(speakButton.getText()=="Deutsch"){
+            tts.setLanguage(Locale.GERMAN);
+            text = editText.getText().toString();
+            tts.speak(text, TextToSpeech.QUEUE_FLUSH, null);
+
+        }
+        else{
+            tts.setLanguage(Locale.ENGLISH);
+            text = editText.getText().toString();
+            tts.speak(text, TextToSpeech.QUEUE_FLUSH, null);
+        }
     }
 }
-
-
-
-
 
 
    /* public void addListenerOnButton() {
