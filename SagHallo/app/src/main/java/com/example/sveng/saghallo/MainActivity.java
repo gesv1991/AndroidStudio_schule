@@ -33,18 +33,17 @@ public class MainActivity extends Activity implements TextToSpeech.OnInitListene
         radioLanguage = (RadioGroup) findViewById(R.id.radioLanguage) ;
         speakButton = (Button) findViewById(R.id.speakButton);
         speakButton.setOnClickListener(this);
-
     }
 
     @Override
     public void onClick(View view) {
 
-        int selectedId = radioLanguage.getCheckedRadioButtonId();
-        speakButton = (RadioButton) findViewById(selectedId);
+        RadioButton selectedId = (RadioButton) radioLanguage.findViewById(radioLanguage.getCheckedRadioButtonId());
         EditText editText = (EditText)findViewById(R.id.speakText);
 
-        Log.i("what", speakButton);
-        if(speakButton.getText().toString()=="Deutsch"){
+        Log.i("what", String.valueOf(speakButton));
+
+        if(findViewById(R.id.radioDE)==selectedId){
             Log.i("deutsch", "Deutsch");
             tts.setLanguage(Locale.GERMAN);
             text = editText.getText().toString();
@@ -58,24 +57,3 @@ public class MainActivity extends Activity implements TextToSpeech.OnInitListene
         }
     }
 }
-
-
-   /* public void addListenerOnButton() {
-        speakButton.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View view) {
-                int selectedId = radioLanguage.getCheckedRadioButtonId();
-                speakButton = (RadioButton) findViewById(selectedId);
-
-            }
-        });
-    }
-
-               if(speakButton.getText()=="Deutsch"){
-                    tts.setLanguage(Locale.GERMAN);
-
-                }
-                else{
-                    tts.setLanguage(Locale.ENGLISH);
-                }*/
