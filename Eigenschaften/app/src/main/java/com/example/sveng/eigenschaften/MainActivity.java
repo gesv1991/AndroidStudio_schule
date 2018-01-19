@@ -22,12 +22,31 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        startApp();
+        startApp();             // Starte die Methode
     }
 
     public void startApp() {
 
+        TextView tvHeightPx = findViewById(R.id.tvHeightPx);
+        TextView tvDensity = findViewById(R.id.tvDensity);
+        TextView tvDensityDPI = findViewById(R.id.tvDensityDPI);
+        TextView tvWidthPx = findViewById(R.id.tvWidthPx);
+        TextView tvLocale = findViewById(R.id.tvLocale);
+        TextView tvVersionSdk = findViewById(R.id.tvVersionSdk);
+        TextView tvRelease = findViewById(R.id.tvRelease);
 
+       DisplayMetrics metrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(metrics);
+
+        tvDensity.setText(Float.toString(metrics.density));
+        tvDensityDPI.setText(Integer.toString(metrics.densityDpi));
+        tvHeightPx.setText(Integer.toString(metrics.heightPixels));
+        tvWidthPx.setText(Integer.toString(metrics.widthPixels));
+
+        // Locale
+        Locale config = getResources().getConfiguration().locale;
+        tvLocale.setText(String.valueOf(config));
+        tvVersionSdk.setText(Integer.toString(SDK_INT));
+        tvRelease.setText(RELEASE);
     }
 }
