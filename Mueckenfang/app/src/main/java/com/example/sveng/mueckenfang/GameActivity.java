@@ -25,8 +25,9 @@ public class GameActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.game);
-        spielStarten();
         massstab = getResources().getDisplayMetrics().density;
+        spielStarten();
+
     }
 
     // Ein neues Spiel starten
@@ -46,7 +47,7 @@ public class GameActivity extends AppCompatActivity {
         Log.i("starteRundeStart", "starteRunde START");
         runde = runde + 1;		// ...
         muecken = runde * 10;	// ...
-        gefangeneMuecken = 0;	// ...
+        gefangeneMuecken = 05;	// ...
         zeit = 60;	// ...
         bildschirmAktualisieren();
         Log.i("starteRundeEnd", "starteRunde END");
