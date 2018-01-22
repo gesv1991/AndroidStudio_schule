@@ -81,6 +81,8 @@
             android:layout_height="wrap_content"
             android:layout_above="@+id/textView19"
             android:layout_centerHorizontal="true"
+            android:password="false"
+            android:phoneNumber="false"
             android:text="TextView" />
 
         <TextView
