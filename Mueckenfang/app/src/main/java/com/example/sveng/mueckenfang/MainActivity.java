@@ -1,5 +1,4 @@
 package com.example.sveng.mueckenfang;
-
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -16,10 +15,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         startButton = (Button) findViewById(R.id.startButton);
-
-
         startButton.setOnClickListener(this);
-
     }
 
     @Override
@@ -27,6 +23,5 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         startActivity(new Intent(this, GameActivity.class));
     }
-
 }
 

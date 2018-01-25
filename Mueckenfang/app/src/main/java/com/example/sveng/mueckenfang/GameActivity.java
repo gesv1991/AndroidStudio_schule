@@ -1,5 +1,4 @@
 package com.example.sveng.mueckenfang;
-
 import android.app.Dialog;
 import android.os.Bundle;
 import android.os.Handler;
@@ -68,19 +67,14 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     {
         TextView tvPunkte = (TextView) findViewById(R.id.points);
         tvPunkte.setText(Integer.toString(punkte));
-
         TextView tvRunde = (TextView) findViewById(R.id.round);
         tvRunde.setText(Integer.toString(runde));
-
         TextView tvMuecke = (TextView) findViewById(R.id.hits);
         tvMuecke.setText(Integer.toString(gefangeneMuecken));
-
         TextView tvZeit = (TextView) findViewById(R.id.time);
         tvZeit.setText(Integer.toString(zeit));
-
         FrameLayout flTreffer = (FrameLayout) findViewById(R.id.bar_hits);
         FrameLayout flZeit = (FrameLayout) findViewById(R.id.bar_time);
-
         ViewGroup.LayoutParams lpTreffer = flTreffer.getLayoutParams();
 
         //Breite wird auf einen geeigneten Wert geändert.
@@ -154,10 +148,8 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     private void eineMueckeAnzeigen() {
         int hoehe = spielbereich.getWidth();
         int breite = spielbereich.getHeight();
-
         int muecke_breite = (int) Math.round(massstab*50);
         int muecke_hoehe = (int) Math.round(massstab*42);
-
         int links = zufallsgenerator.nextInt(breite-muecke_breite);
         int oben = zufallsgenerator.nextInt(hoehe-muecke_hoehe);
 

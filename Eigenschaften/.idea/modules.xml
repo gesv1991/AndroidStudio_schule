@@ -3,7 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Eigenschaften.iml" filepath="$PROJECT_DIR$/Eigenschaften.iml" />
+      <module fileurl="file://C:\Users\gesv\Documents\GitHub\AndroidStudio_schule\Eigenschaften\Eigenschaften.iml" filepath="C:\Users\gesv\Documents\GitHub\AndroidStudio_schule\Eigenschaften\Eigenschaften.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://C:\Users\gesv\Documents\GitHub\AndroidStudio_schule\Eigenschaften\app\app.iml" filepath="C:\Users\gesv\Documents\GitHub\AndroidStudio_schule\Eigenschaften\app\app.iml" />
     </modules>
   </component>
 </project>
