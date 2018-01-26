@@ -149,13 +149,6 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
             } else {
                 nummer++;
             }
-            mpcrush.start();
-            if (mpcrush.isPlaying()){
-     //           mpcrush.pause();
-            }
-            mpcrush.seekTo(0);
-            mpcrush.start();
-
         }
     }
 
@@ -178,13 +171,13 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         params.topMargin = oben;
         params.gravity = Gravity.TOP + Gravity.LEFT;
         spielbereich.addView(muecke,params);
- //             mp.start();
+              mp.start();
         if(mp.isPlaying()){
-   //         mp.pause();
+            mp.pause();
         }
         mp.seekTo(0);
-  //          mp.start();
-        mpcrush.pause();
+            mp.start();
+   //    mpcrush.pause();
 
     }
     @Override
@@ -200,6 +193,13 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         bildschirmAktualisieren();
         spielbereich.removeView(v);
         mp.pause();
+        mpcrush.start();
+        if (mpcrush.isPlaying()){
+            //           mpcrush.pause();
+        }
+        mpcrush.seekTo(0);
+        mpcrush.start();
+
 
     }
     private void gameOver() {
