@@ -3,7 +3,6 @@ import android.app.Dialog;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
-import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Gravity;
@@ -33,7 +32,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     private static final long HOECHSTALTER_MS = 200;
     private Handler handler = new Handler();
     private MediaPlayer mp;
-    private MediaPlayer crush;
+    private MediaPlayer mpcrush;
 
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +40,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.game);
         massstab = getResources().getDisplayMetrics().density;
         mp = MediaPlayer.create(this, R.raw.muecke);
-        crush = MediaPlayer.create(this, R.raw.crush2);
+        mpcrush = MediaPlayer.create(this, R.raw.crush2);
 
         spielStarten();
         spielbereich = (ViewGroup)findViewById(R.id.spielbereich);
@@ -150,12 +149,12 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
             } else {
                 nummer++;
             }
-/*            crush.start();
-            if (crush.isPlaying()){
-                crush.pause();
+            mpcrush.start();
+            if (mpcrush.isPlaying()){
+     //           mpcrush.pause();
             }
-            crush.seekTo(2120);
-            crush.start();*/
+            mpcrush.seekTo(0);
+            mpcrush.start();
 
         }
     }
@@ -179,13 +178,13 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         params.topMargin = oben;
         params.gravity = Gravity.TOP + Gravity.LEFT;
         spielbereich.addView(muecke,params);
-              mp.start();
+ //             mp.start();
         if(mp.isPlaying()){
-            mp.pause();
+   //         mp.pause();
         }
         mp.seekTo(0);
-            mp.start();
-        crush.pause();
+  //          mp.start();
+        mpcrush.pause();
 
     }
     @Override
