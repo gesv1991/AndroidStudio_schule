@@ -1,7 +1,9 @@
 package com.example.sveng.mueckenfang;
 import android.app.Dialog;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
+import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Gravity;
@@ -30,11 +32,17 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     private ViewGroup spielbereich;
     private static final long HOECHSTALTER_MS = 200;
     private Handler handler = new Handler();
+    private MediaPlayer mp;
+    private MediaPlayer crush;
+
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.game);
         massstab = getResources().getDisplayMetrics().density;
+        mp = MediaPlayer.create(this, R.raw.muecke);
+        crush = MediaPlayer.create(this, R.raw.crush2);
+
         spielStarten();
         spielbereich = (ViewGroup)findViewById(R.id.spielbereich);
     }
@@ -142,6 +150,13 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
             } else {
                 nummer++;
             }
+/*            crush.start();
+            if (crush.isPlaying()){
+                crush.pause();
+            }
+            crush.seekTo(2120);
+            crush.start();*/
+
         }
     }
 
@@ -153,6 +168,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         int links = zufallsgenerator.nextInt(breite-muecke_breite);
         int oben = zufallsgenerator.nextInt(hoehe-muecke_hoehe);
 
+
         ImageView muecke = new ImageView(this);
         muecke.setImageResource(R.drawable.muecke);
         muecke.setTag(R.id.geburtsdatum, new Date());
@@ -163,6 +179,19 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         params.topMargin = oben;
         params.gravity = Gravity.TOP + Gravity.LEFT;
         spielbereich.addView(muecke,params);
+              mp.start();
+        if(mp.isPlaying()){
+            mp.pause();
+        }
+        mp.seekTo(0);
+            mp.start();
+        crush.pause();
+
+    }
+    @Override
+    public void onDestroy(){
+        mp.release();
+        super.onDestroy();
     }
 
     @Override
@@ -171,8 +200,9 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         punkte += 100;
         bildschirmAktualisieren();
         spielbereich.removeView(v);
-    }
+        mp.pause();
 
+    }
     private void gameOver() {
         Dialog dialog = new Dialog(this, android.R.style.Theme_Translucent_NoTitleBar_Fullscreen);
         dialog.setContentView(R.layout.activity_gameover);
