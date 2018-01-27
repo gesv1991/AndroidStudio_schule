@@ -64,7 +64,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         runde = runde + 1;		// ...
         muecken = runde * 10;	// ...
         gefangeneMuecken = 0;	// ...
-        zeit = 60;	// ...
+        zeit = 20;	// ...
         bildschirmAktualisieren();
         handler.postDelayed(this, 1000);
         Log.i("starteRundeEnd", "starteRunde END");
@@ -153,8 +153,8 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void eineMueckeAnzeigen() {
-        int hoehe = spielbereich.getWidth();
-        int breite = spielbereich.getHeight();
+        int hoehe = spielbereich.getHeight();
+        int breite = spielbereich.getWidth();
         int muecke_breite = (int) Math.round(massstab*50);
         int muecke_hoehe = (int) Math.round(massstab*42);
         int links = zufallsgenerator.nextInt(breite-muecke_breite);
@@ -171,13 +171,13 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         params.topMargin = oben;
         params.gravity = Gravity.TOP + Gravity.LEFT;
         spielbereich.addView(muecke,params);
-              mp.start();
+        mp.start();
         if(mp.isPlaying()){
             mp.pause();
         }
         mp.seekTo(0);
-            mp.start();
-   //    mpcrush.pause();
+        mp.start();
+        //    mpcrush.pause();
 
     }
     @Override
@@ -200,12 +200,14 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         mpcrush.seekTo(0);
         mpcrush.start();
 
-
     }
     private void gameOver() {
         Dialog dialog = new Dialog(this, android.R.style.Theme_Translucent_NoTitleBar_Fullscreen);
-        dialog.setContentView(R.layout.activity_gameover);
+        dialog.setContentView(R.layout.activity_main);
         dialog.show();
         spielLaeuft = false;
+        setResult(punkte);
     }
+
+
 }
