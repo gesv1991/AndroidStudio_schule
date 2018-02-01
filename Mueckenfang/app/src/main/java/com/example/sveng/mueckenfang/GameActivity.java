@@ -31,16 +31,15 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     private ViewGroup spielbereich;
     private static final long HOECHSTALTER_MS = 200;
     private Handler handler = new Handler();
-    private MediaPlayer mp;
-    private MediaPlayer mpcrush;
-
+    private MediaPlayer mediaPlayerMuecke;
+    private MediaPlayer mediaPlayerZerdruecken;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.game);
         massstab = getResources().getDisplayMetrics().density;
-        mp = MediaPlayer.create(this, R.raw.muecke);
-        mpcrush = MediaPlayer.create(this, R.raw.crush2);
+        mediaPlayerMuecke = MediaPlayer.create(this, R.raw.muecke);
+        mediaPlayerZerdruecken = MediaPlayer.create(this, R.raw.crush2);
 
         spielStarten();
         spielbereich = (ViewGroup)findViewById(R.id.spielbereich);
@@ -70,8 +69,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         Log.i("starteRundeEnd", "starteRunde END");
     }
 
-    private void bildschirmAktualisieren()
-    {
+    private void bildschirmAktualisieren()  {
         TextView tvPunkte = (TextView) findViewById(R.id.points);
         tvPunkte.setText(Integer.toString(punkte));
         TextView tvRunde = (TextView) findViewById(R.id.round);
@@ -117,9 +115,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
             if (!pruefeRundenende())
             {
                 handler.postDelayed(this, 1000);
-            }
-        }
-    }
+            }     }   }
 
     private boolean pruefeRundenende() {
         if (gefangeneMuecken >= muecken) {
@@ -148,9 +144,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
                 spielbereich.removeView(muecke);
             } else {
                 nummer++;
-            }
-        }
-    }
+            }    }    }
 
     private void eineMueckeAnzeigen() {
         int hoehe = spielbereich.getHeight();
@@ -159,7 +153,6 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         int muecke_hoehe = (int) Math.round(massstab*42);
         int links = zufallsgenerator.nextInt(breite-muecke_breite);
         int oben = zufallsgenerator.nextInt(hoehe-muecke_hoehe);
-
 
         ImageView muecke = new ImageView(this);
         muecke.setImageResource(R.drawable.muecke);
@@ -171,18 +164,18 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         params.topMargin = oben;
         params.gravity = Gravity.TOP + Gravity.LEFT;
         spielbereich.addView(muecke,params);
-        mp.start();
-        if(mp.isPlaying()){
-            mp.pause();
+        mediaPlayerMuecke.start();
+        if(mediaPlayerMuecke.isPlaying()){
+            mediaPlayerMuecke.pause();
         }
-        mp.seekTo(0);
-        mp.start();
-        //    mpcrush.pause();
-
+        mediaPlayerMuecke.seekTo(0);
+        mediaPlayerMuecke.start();
+        //    mediaPlayerZerdruecken.pause();
     }
+
     @Override
     public void onDestroy(){
-        mp.release();
+        mediaPlayerMuecke.release();
         super.onDestroy();
     }
 
@@ -192,22 +185,22 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         punkte += 100;
         bildschirmAktualisieren();
         spielbereich.removeView(v);
-        mp.pause();
-        mpcrush.start();
-        if (mpcrush.isPlaying()){
-            //           mpcrush.pause();
+        //sound
+        mediaPlayerMuecke.pause();
+        mediaPlayerZerdruecken.start();
+        if (mediaPlayerZerdruecken.isPlaying()){
         }
-        mpcrush.seekTo(0);
-        mpcrush.start();
-
+        mediaPlayerZerdruecken.seekTo(0);
+        mediaPlayerZerdruecken.start();
     }
+
     private void gameOver() {
         Dialog dialog = new Dialog(this, android.R.style.Theme_Translucent_NoTitleBar_Fullscreen);
         dialog.setContentView(R.layout.activity_main);
         dialog.show();
         spielLaeuft = false;
         setResult(punkte);
+        mediaPlayerMuecke.stop();
+        mediaPlayerZerdruecken.stop();
     }
-
-
 }
