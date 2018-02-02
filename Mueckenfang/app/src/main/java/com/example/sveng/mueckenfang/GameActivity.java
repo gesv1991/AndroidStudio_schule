@@ -15,10 +15,6 @@ import android.widget.TextView;
 import java.util.Date;
 import java.util.Random;
 
-/**
- * Created by sveng on 12.01.2018.
- */
-
 public class GameActivity extends AppCompatActivity implements View.OnClickListener, Runnable{
     private boolean spielLaeuft;
     private int runde;
@@ -124,7 +120,6 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         }
         return false;
     }
-
     private boolean pruefeSpielEnde() {
         if (zeit == 0 && gefangeneMuecken < muecken) {
             gameOver();
@@ -132,7 +127,6 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         }
         return false;
     }
-
     private void mueckenVerschwinden() {
         int nummer = 0;
         //Zählt die "Kinder" auf dem spielbereich Element.
@@ -145,7 +139,6 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
             } else {
                 nummer++;
             }    }    }
-
     private void eineMueckeAnzeigen() {
         int hoehe = spielbereich.getHeight();
         int breite = spielbereich.getWidth();
@@ -172,13 +165,11 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         mediaPlayerMuecke.start();
         //    mediaPlayerZerdruecken.pause();
     }
-
     @Override
     public void onDestroy(){
         mediaPlayerMuecke.release();
         super.onDestroy();
     }
-
     @Override
     public void onClick(View v) {
         gefangeneMuecken++;
@@ -193,7 +184,6 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         mediaPlayerZerdruecken.seekTo(0);
         mediaPlayerZerdruecken.start();
     }
-
     private void gameOver() {
         Dialog dialog = new Dialog(this, android.R.style.Theme_Translucent_NoTitleBar_Fullscreen);
         dialog.setContentView(R.layout.activity_main);
